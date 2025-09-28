@@ -31,9 +31,36 @@ if __name__ == "__main__":
     )
 ```
 
+> 如果需要從yt下載影片，我有放 `yt.py`，把裡面字串連結改成你要的連結就能用了
+>
+> 當然別忘記讓他跑起來
+>
+> ```
+> python yt.py
+> ```
+
 然後配置一下你的環境
 
+```batch
+pip install -r requirements.txt
+```
+
 然後運行
+
+**產生動畫**
+
+```batch
+python main.py
+```
+> 這邊在運行的時候，由於我沒做進度條，因此根據不同的電腦配置有可能會跑很久的時間
+
+**播放動畫**
+
+```batch
+python play.py
+```
+> 你也可以運行 `play.exe` 不過動畫檔的名字需固定為 `ascii_animation.txt`
+
 
 ## Example flim
 
