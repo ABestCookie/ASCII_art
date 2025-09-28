@@ -5,6 +5,7 @@ from PIL import Image
 # ASCII 字元（由深至淺）
 ASCII_CHARS = "@%#*+=-:. "
 
+#=====像素to字元=======
 def resize_image(image, new_width=100):
     width, height = image.size
     aspect_ratio = height / width
@@ -35,7 +36,9 @@ def image_to_ascii(path, width=100):
     pixel_count = len(ascii_str)
     ascii_image = "\n".join(ascii_str[i:i+width] for i in range(0, pixel_count, width))
     return ascii_image
+#=============================
 
+#=====切偵========
 def extract_frames(video_path, output_dir="frames", max_frames=None, fps_skip=1):
     os.makedirs(output_dir, exist_ok=True)
     cap = cv2.VideoCapture(video_path)
@@ -67,7 +70,8 @@ def extract_frames(video_path, output_dir="frames", max_frames=None, fps_skip=1)
     cap.release()
     print(f"✅ 已擷取 {saved} 幀圖片到資料夾：{output_dir}")
     return saved
-
+#===========
+#=====store========
 def generate_ascii_animation(video_path, output_txt="ascii_animation.txt", frame_width=100, fps_skip=1, max_frames=None):
     temp_dir = "ascii_frames"
     total = extract_frames(video_path, output_dir=temp_dir, max_frames=max_frames, fps_skip=fps_skip)
@@ -80,6 +84,7 @@ def generate_ascii_animation(video_path, output_txt="ascii_animation.txt", frame
             out.write("\n===FRAME===\n")
 
     print(f"✅ ASCII 動畫儲存完成：{output_txt}")
+#====================
 
 # ✅ 使用方式
 if __name__ == "__main__":
@@ -90,3 +95,4 @@ if __name__ == "__main__":
         fps_skip=1,       # 每2幀擷取一次（加快轉換速度）
         max_frames=None    # 最多100幀（None = 全部）
     )
+
