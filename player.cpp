@@ -2,17 +2,16 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <chrono>
-#include <thread>
 #include <cstdlib>
+#include <windows.h>
 
-#ifdef _WIN32
-    #define CLEAR_COMMAND "cls"
-#else
-    #define CLEAR_COMMAND "clear"
-#endif
+#define CLEAR_COMMAND "cls"
 
 using namespace std;
+
+void thread_sleep(int ms) {
+    Sleep(ms);
+}
 
 
 
@@ -65,7 +64,7 @@ void playAnimation(const vector<string>& frames, int delayMs) {
     for (const auto& frame : frames) {
         system(CLEAR_COMMAND);
         cout << frame + "\n";
-        this_thread::sleep_for(chrono::milliseconds(delayMs));
+        thread_sleep(delayMs);
     }
 }
 
@@ -73,7 +72,7 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     string asciiFile = "ascii_animation.txt";
-    int delayMs = 0;  // 延遲時間（毫秒）
+    int delayMs = 1000/30;  // 延遲時間（毫秒）
 
     auto frames = loadFramesFromFile(asciiFile);
     
@@ -82,8 +81,7 @@ int main() {
         return 1;
     }
 
-    cout << "🎬 共載入 " << frames.size() << " 幀，開始播放.../n";
-    this_thread::sleep_for(chrono::seconds(1));
+    cout << "🎬 共載入 " << frames.size() << " 幀，開始播放...\n";
 
     playAnimation(frames, delayMs);
 

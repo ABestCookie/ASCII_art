@@ -34,7 +34,9 @@ def image_to_ascii(path, width=100):
 
     ascii_str = pixels_to_ascii(image)
     pixel_count = len(ascii_str)
-    ascii_image = "\n".join(ascii_str[i:i+width] for i in range(0, pixel_count, width))
+    
+    lines = [ascii_str[i:i+width] for i in range(0, pixel_count, width)]
+    ascii_image = "\n".join(line if line.strip() else "" for line in lines)
     return ascii_image
 #=============================
 

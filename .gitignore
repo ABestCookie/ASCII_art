@@ -1,0 +1,11 @@
+ascii_frames/*.png
+ascii_frames
+# 生成所產生的各幀數圖片
+
+ascii_animation.txt
+# ASCII 動畫的文本文件
+
+.vscode
+ACSII_art.code-workspace
+# Visual Studio Code 的設定文件夾
+
